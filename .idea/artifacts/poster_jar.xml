@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact name="poster:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/poster_jar</output-path>
+    <root id="root">
+      <element id="archive" name="poster.jar">
+        <element id="module-output" name="poster" />
+      </element>
+      <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.1.10.RELEASE" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-core:5.1.10.RELEASE" />
+      <element id="library" level="project" name="Maven: com.github.jai-imageio:jai-imageio-core:1.4.0" />
+      <element id="library" level="project" name="Maven: com.google.zxing:core:3.3.3" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.28" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-simple:1.7.25" />
+      <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
+      <element id="library" level="project" name="Maven: com.google.zxing:javase:3.3.3" />
+      <element id="library" level="project" name="Maven: com.beust:jcommander:1.72" />
+      <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.8" />
+    </root>
+  </artifact>
+</component>

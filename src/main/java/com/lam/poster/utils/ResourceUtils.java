@@ -20,7 +20,7 @@ import java.net.URL;
  */
 public class ResourceUtils {
 
-    private static PosterConfig config;
+    private static PosterConfig config = new PosterConfig();
 
     public void setConfig(PosterConfig config) {
         ResourceUtils.config = config;
