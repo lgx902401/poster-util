@@ -13,7 +13,7 @@ import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Properties;
 
-public class PosterConfig{
+public class PosterConfig {
     private static final String CONFIGURATION_FILE = "poster.properties";
 
     private final Properties properties = new Properties();
@@ -50,7 +50,6 @@ public class PosterConfig{
      * 获取文件下载后的地址
      *
      * @param url
-     *
      * @return String
      */
     public String getDownloadPath(String url) {
@@ -58,41 +57,50 @@ public class PosterConfig{
     }
 
     public String getTemplatesPath() {
-        return templatesPath;
+        loadProperties();
+        templatesPath = getStringProperty("poster-templates-path");
+        return withTail(templatesPath);
     }
 
     public String getTemplatesPath(String imageName) {
+        System.out.println(getTemplatesPath() + imageName);
         return getTemplatesPath() + imageName;
     }
 
     public String getImagePath() {
-        return imagePath;
+        loadProperties();
+        imagePath = getStringProperty("poster-image-path");
+        return withTail(imagePath);
     }
 
-    public String getImagePath(String imagePath){
-        return getImagePath()+ imagePath;
+    public String getImagePath(String imagePath) {
+        System.out.println(getImagePath() + imagePath);
+        return getImagePath() + imagePath;
     }
 
     public String getFontsPath() {
-        return fontsPath;
+        loadProperties();
+        fontsPath = getStringProperty("poster-fonts-path");
+        return withTail(fontsPath);
     }
 
     public String getFontsPath(String font) {
+        System.out.println(getFontsPath() + font);
         return getFontsPath() + font;
     }
 
-//
-//    public static String (String path) {
-//        return path + (path.endsWith("/") ? "" : "/");
-//    }
-
-    public void init (){
-        loadProperties();
-        fontsPath = getStringProperty("poster-fonts-path");
-        templatesPath = getStringProperty("poster-templates-path");
-        imagePath = getStringProperty("poster-image-path");
-
+    public static String withTail(String path) {
+        return path + (path.endsWith("/") ? "" : "/");
     }
+
+
+    //    public void init (){
+//        loadProperties();
+//        fontsPath = getStringProperty("poster-fonts-path");
+//        templatesPath = getStringProperty("poster-templates-path");
+//        imagePath = getStringProperty("poster-image-path");
+//
+//    }
     private void loadProperties() {
         // Add props from the resource simplelogger.properties
         InputStream in = AccessController.doPrivileged(new PrivilegedAction<InputStream>() {
@@ -129,13 +137,12 @@ public class PosterConfig{
         }
         return (prop == null) ? properties.getProperty(name) : prop;
     }
+
     /**
      * 从模板中获取图片
      *
      * @param imageName
-     *
      * @return imageFile
-     *
      * @throws IOException
      */
     public BufferedImage getTemplateImage(String imageName) throws IOException {
@@ -160,9 +167,7 @@ public class PosterConfig{
      * 从字体库中获取字体
      *
      * @param font
-     *
      * @return File
-     *
      * @throws IOException
      */
     public File getFontFile(String font) throws IOException {
@@ -182,11 +187,11 @@ public class PosterConfig{
         // 实在找不到就抛异常
         throw new IOException(font + " font not found!");
     }
+
     /**
      * 获取下载过的文件
      *
      * @param url
-     *
      * @return File
      */
     public File getDownloadedFile(String url) {

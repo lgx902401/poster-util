@@ -12,12 +12,11 @@ public class PosterUtil {
 
     private static File file;
 
-    public static void setConfig(PosterConfig config) {
-        PosterUtil.config = config;
-    }
+//    public static void setConfig(PosterConfig config) {
+//        PosterUtil.config = config;
+//    }
 
     public static File draw(Poster poster){
-        config.init();
         try {
              file = poster.draw(config.getImagePath());
         } catch (IOException e) {

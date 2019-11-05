@@ -61,7 +61,8 @@ public class Poster {
 
     private void push2map(Map<Integer, ArrayList<Drawable>> indexMap, Drawable drawable) {
         ArrayList<Drawable> drawables = indexMap.get(drawable.getZIndex());
-        drawables = drawables == null ? new ArrayList<>() : drawables;
+        if (drawables == null) drawables = new ArrayList<>();
+        else drawables = drawables;
         drawables.add(drawable);
         indexMap.put(drawable.getZIndex(), drawables);
     }

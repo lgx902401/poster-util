@@ -27,53 +27,6 @@ public class ResourceUtils {
     }
 
 
-    /**
-     * 获取图片
-     *
-     * @param url
-     *
-     * @return BufferedImage
-     *
-     * @throws IOException
-     */
-    public static BufferedImage getImage(String url) throws IOException {
-        if (url.contains("://")) {
-            return getImageFromUrl(url);
-        }
-
-        BufferedImage imageFile = config.getTemplateImage(url);
-
-        if (imageFile != null) {
-            return imageFile;
-        }
-
-        throw new IOException("Can't get input stream from URL!");
-    }
-
-    /**
-     * 通过 URL 获取图片并缓存到本地文件夹中
-     *
-     * @param url
-     *
-     * @return BufferedImage
-     *
-     * @throws IOException
-     */
-    public static BufferedImage getImageFromUrl(String url) throws IOException {
-
-        File file = config.getDownloadedFile(url);
-        if (file != null) {
-            return ImageIO.read(file);
-        }
-
-        BufferedImage image = ImageIO.read(new URL(url));
-        // 存起来
-        File imageFile = new File(config.getDownloadPath(url));
-        imageFile.mkdirs();
-        ImageIO.write(image, "PNG", imageFile);
-
-        return image;
-    }
 
     /**
      * 图片设置圆角
@@ -110,6 +63,9 @@ public class ResourceUtils {
 
     public static File getFontFile(String font) throws IOException {
         return config.getFontFile(font + ".ttf");
+    }
+    public static BufferedImage getImage(String imageName) throws IOException {
+        return config.getTemplateImage(imageName);
     }
 
     /**
@@ -165,4 +121,52 @@ public class ResourceUtils {
 
 
     }
+
+//    /**
+//     * 获取图片
+//     *
+//     * @param url
+//     *
+//     * @return BufferedImage
+//     *
+//     * @throws IOException
+//     */
+//    public static BufferedImage getImage(String url) throws IOException {
+//        if (url.contains("://")) {
+//            return getImageFromUrl(url);
+//        }
+//
+//        BufferedImage imageFile = config.getTemplateImage(url);
+//
+//        if (imageFile != null) {
+//            return imageFile;
+//        }
+//
+//        throw new IOException("Can't get input stream from URL!");
+//    }
+//
+//    /**
+//     * 通过 URL 获取图片并缓存到本地文件夹中
+//     *
+//     * @param url
+//     *
+//     * @return BufferedImage
+//     *
+//     * @throws IOException
+//     */
+//    public static BufferedImage getImageFromUrl(String url) throws IOException {
+//
+//        File file = config.getDownloadedFile(url);
+//        if (file != null) {
+//            return ImageIO.read(file);
+//        }
+//
+//        BufferedImage image = ImageIO.read(new URL(url));
+//        // 存起来
+//        File imageFile = new File(config.getDownloadPath(url));
+//        imageFile.mkdirs();
+//        ImageIO.write(image, "PNG", imageFile);
+//
+//        return image;
+//    }
 }
