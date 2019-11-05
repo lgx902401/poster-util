@@ -1,7 +1,6 @@
 package com.lam.poster.config;
 
 
-import com.lam.poster.utils.PropertiesUtil;
 import com.lam.poster.utils.ResourceUtils;
 import org.springframework.util.DigestUtils;
 

@@ -61,7 +61,7 @@ public class Poster {
 
     private void push2map(Map<Integer, ArrayList<Drawable>> indexMap, Drawable drawable) {
         ArrayList<Drawable> drawables = indexMap.get(drawable.getZIndex());
-        drawables = drawables == null ? new ArrayList<>() : drawables;
+//        drawables = drawables == null ? new ArrayList<>() : drawables;
         drawables.add(drawable);
         indexMap.put(drawable.getZIndex(), drawables);
     }
@@ -132,7 +132,7 @@ public class Poster {
 
         // 创建临时文件
         File file1 = new File(imagePath);
-        File file = file1.createTempFile(this.key(), "." + format,file1);
+        File file = File.createTempFile(this.key(), "." + format,file1);
         ImageIO.write(image, format, file); // 把文件写入图片
         file.deleteOnExit(); // 使用完后删除文件
 
@@ -144,7 +144,7 @@ public class Poster {
      *
      * @return String
      */
-    public String key() {
+    private String key() {
         return DigestUtils.md5DigestAsHex(this.toString().getBytes());
     }
 }
