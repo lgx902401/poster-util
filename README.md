@@ -1,13 +1,17 @@
 # poster-util
 > ps：自定义字体、模板图片、网络图片缓存路径均可配置。具体配置参考 [poster.properties]
-##在resource目录下新建fonts templates image 这三个文件夹
+##在resource目录下新建fonts templates image download这四个文件夹
 #字体的路径
-poster-fonts-path=
+poster-fonts-path=C:\\Users\\appadmin\\Desktop\\demo\\learn\\poster\\src\\main\\resources\\fonts
 #背景模板的路径
-poster-templates-path=
+poster-templates-path=C:\\Users\\appadmin\\Desktop\\demo\\learn\\poster\\src\\main\\resources\\templates
 #图片生成路径
-poster-image-path=
-
+poster-image-path=C:\\Users\\appadmin\\Desktop\\demo\\learn\\poster\\src\\main\\resources\\image
+#图片下载路径
+poster-download-path=C:\\Users\\appadmin\\Desktop\\demo\\learn\\poster\\src\\main\\resources\\download
+#json文件路径
+poster-jsonFile-path=C:\\Users\\appadmin\\Desktop\\poster-util\\src\\main\\resource\\templates.json
+## png转jpg图片占存大小变小，jgp转png图片占存大小变大
 ### config字段
 
 | 字段            | 类型                     | 必填 | 描述                                       |
@@ -15,6 +19,8 @@ poster-image-path=
 | width           | Number(单位:px)          | 是   | 画布宽度                                   |
 | height          | Number(单位:px)          | 是   | 画布高度                                   |
 | backgroundColor | String                   | 否   | 画布颜色                                   |
+| desFileSize     | long                     | 否   | 指定图片大小,单位kb                        |
+| accuracy        | double                   | 否   | 精度,递归压缩的比率,建议小于0.9,等于1会发生死循环|
 | blocks          | Object Array（对象数组） | 否   | 看下文                                     |
 | texts           | Object Array（对象数组） | 否   | 看下文                                     |
 | images          | Object Array（对象数组） | 否   | 看下文                                     |
@@ -89,7 +95,25 @@ poster-image-path=
                 return new ResponseTemplate<>(400, "图片生成失败", null);
             }
         }
+##main函数调用
+public class App {
+    public static void main(String[] args) throws IOException {
+        Poster poster = FileUtil.JsonToPoster();
+        File file = PosterUtil.draw(poster);
+        System.out.println(file);
+    }
+}       
 ##依赖
+ <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.59</version>
+        </dependency>
+  <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>0.4.8</version>
+        </dependency>
  <dependency>
       <groupId>com.google.zxing</groupId>
       <artifactId>core</artifactId>
@@ -117,6 +141,8 @@ poster-image-path=
     "width": 640,
     "height": 1034,
     "backgroundColor": "#d04c44",
+    "desFileSize":300,
+    "accuracy":0.9,
     "blocks": [
         {
             "x": 25,

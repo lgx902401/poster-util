@@ -3,6 +3,7 @@ package com.lam.poster.drawable;
 import com.lam.poster.service.Drawable;
 import com.lam.poster.utils.ColorTools;
 import lombok.Data;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.util.DigestUtils;
 
 import javax.imageio.ImageIO;
@@ -11,12 +12,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class Poster {
+public class Poster implements Serializable {
     /**
      * 画布宽度
      */
@@ -58,6 +61,14 @@ public class Poster {
      * 线列表
      */
     private ArrayList<Line> lines;
+    /**
+     *  指定图片大小,单位kb
+     */
+    private long desFileSize;
+    /**
+     *  精度,递归压缩的比率,建议小于0.9,等于1会发生死循环
+     */
+    private double accuracy = 0.9;
 
     private void push2map(Map<Integer, ArrayList<Drawable>> indexMap, Drawable drawable) {
         ArrayList<Drawable> drawables = indexMap.get(drawable.getZIndex());
@@ -133,9 +144,12 @@ public class Poster {
 
         // 创建临时文件
         File file1 = new File(imagePath);
-        File file = File.createTempFile(this.key(), "." + format,file1);
+        File file = File.createTempFile(this.key(), "." + format, file1);
         ImageIO.write(image, format, file); // 把文件写入图片
-        file.deleteOnExit(); // 使用完后删除文件
+        if (desFileSize != 0){
+            commpressPicForScale(file, file, desFileSize, accuracy);
+        }
+//        file.deleteOnExit(); // 使用完后删除文件
 
         return file;
     }
@@ -148,4 +162,51 @@ public class Poster {
     private String key() {
         return DigestUtils.md5DigestAsHex(this.toString().getBytes());
     }
+
+    /**
+     * @param srcPath     原图片地址
+     * @param desPath     目标图片地址
+     * @param desFileSize 指定图片大小,单位kb
+     * @param accuracy    精度,递归压缩的比率,建议小于0.9,等于1会发生死循环
+     * @return
+     */
+    public static File commpressPicForScale(File srcPath, File desPath,
+                                            long desFileSize, double accuracy) {
+        try {
+            File srcFile = new File(String.valueOf(srcPath));
+            long srcFilesize = srcFile.length();
+            System.out.println("原图片:" + srcPath + ",大小:" + srcFilesize / 1024 + "kb");
+            //递归压缩,直到目标文件大小小于desFileSize
+            commpressPicCycle(desPath, desFileSize, accuracy);
+
+            File desFile = new File(String.valueOf(desPath));
+            System.out.println("目标图片:" + desPath + ",大小" + desFile.length() / 1024 + "kb");
+            System.out.println("图片压缩完成!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return desPath;
+    }
+
+    private static void commpressPicCycle(File desPath, long desFileSize,
+                                          double accuracy) throws IOException {
+        File imgFile = new File(String.valueOf(desPath));
+        long fileSize = imgFile.length();
+        //判断大小,如果小于500k,不压缩,如果大于等于500k,压缩
+        if (fileSize <= desFileSize * 1024) {
+            return;
+        }
+        //计算宽高
+        BufferedImage bim = ImageIO.read(imgFile);
+        int imgWidth = bim.getWidth();
+        int imgHeight = bim.getHeight();
+        int desWidth = new BigDecimal(imgWidth).multiply(
+                new BigDecimal(accuracy)).intValue();
+        int desHeight = new BigDecimal(imgHeight).multiply(
+                new BigDecimal(accuracy)).intValue();
+        Thumbnails.of(desPath).size(desWidth, desHeight).outputQuality(accuracy).toFile(desPath);
+        //如果不满足要求,递归直至满足小于1M的要求
+        commpressPicCycle(desPath, desFileSize, accuracy);
+    }
+
 }

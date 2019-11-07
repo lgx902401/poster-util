@@ -1,0 +1,92 @@
+{
+  "width": 640,
+  "height": 1034,
+  "backgroundColor": "#d04c44",
+  "blocks": [
+    {
+      "x": 25,
+      "y": 25,
+      "width": 590,
+      "height": 820,
+      "borderColor": "#ffe6c0",
+      "borderWidth": 2
+    },
+    {
+      "x": 0,
+      "y": 870,
+      "width": 640,
+      "height": 164,
+      "backgroundColor": "#fff"
+    },
+    {
+      "x": 67,
+      "y": 303,
+      "width": 506,
+      "height": 500,
+      "backgroundColor": "#fff"
+    }
+  ],
+  "texts": [
+    {
+      "text": "Lam",
+      "x": 320,
+      "y": 187,
+      "fontSize": 18,
+      "lineHeight": 18,
+      "color": "#ffe6c0",
+      "width": 320,
+      "lineNum": 1,
+      "baseLine": "middle",
+      "textAlign": "center"
+    },
+    {
+      "text": "{个性签名}",
+      "x": 320,
+      "y": 225,
+      "fontSize": 20,
+      "lineHeight": 24,
+      "color": "#ffe6c0",
+      "width": 480,
+      "lineNum": 2,
+      "baseLine": "middle",
+      "textAlign": "center"
+    },
+    {
+      "text": "{小程序码描述}",
+      "x": 170,
+      "y": 923,
+      "fontSize": 18,
+      "color": "#999",
+      "width": 300,
+      "lineNum": 2,
+      "baseLine": "middle",
+      "zIndex": 8,
+      "lineHeight": 40
+    }
+  ],
+  "images": [
+    {
+      "url": "https://thumbs.dreamstime.com/b/海胆亚目花-coneflower-46567122.jpg",
+      "x": 270,
+      "y": 67,
+      "width": 100,
+      "height": 100,
+      "borderRadius": 100
+    },
+    {
+      "url": "main.png",
+      "x": 87,
+      "y": 323,
+      "width": 466,
+      "height": 460
+    },
+    {
+      "url": "code.png",
+      "x": 45,
+      "y": 905,
+      "width": 100,
+      "height": 100,
+      "zIndex": 9
+    }
+  ]
+}

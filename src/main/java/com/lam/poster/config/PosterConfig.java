@@ -38,12 +38,32 @@ public class PosterConfig {
     private String downloadPath;
 
     /**
+     * .json文件的路径
+     */
+    private String jsonFilePath;
+
+
+    public String getJsonFilePath() {
+        loadProperties();
+        downloadPath = getStringProperty("poster-jsonFile-path");
+        return withTail(downloadPath);
+    }
+
+    public void setJsonFilePath(String jsonFilePath) {
+        this.jsonFilePath = jsonFilePath;
+    }
+
+
+
+    /**
      * 获取文件下载目录
      *
      * @return String
      */
     public String getDownloadPath() {
-        return downloadPath;
+        loadProperties();
+        downloadPath = getStringProperty("poster-download-path");
+        return withTail(downloadPath);
     }
 
     /**
@@ -53,6 +73,7 @@ public class PosterConfig {
      * @return String
      */
     public String getDownloadPath(String url) {
+        System.out.println( getDownloadPath() + url2fileName(url));
         return getDownloadPath() + url2fileName(url);
     }
 
@@ -94,13 +115,6 @@ public class PosterConfig {
     }
 
 
-    //    public void init (){
-//        loadProperties();
-//        fontsPath = getStringProperty("poster-fonts-path");
-//        templatesPath = getStringProperty("poster-templates-path");
-//        imagePath = getStringProperty("poster-image-path");
-//
-//    }
     private void loadProperties() {
         // Add props from the resource simplelogger.properties
         InputStream in = AccessController.doPrivileged(new PrivilegedAction<InputStream>() {
