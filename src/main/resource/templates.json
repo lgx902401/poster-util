@@ -1,92 +1,98 @@
 {
   "width": 640,
-  "height": 1034,
-  "backgroundColor": "#d04c44",
-  "blocks": [
-    {
-      "x": 25,
-      "y": 25,
-      "width": 590,
-      "height": 820,
-      "borderColor": "#ffe6c0",
-      "borderWidth": 2
-    },
-    {
-      "x": 0,
-      "y": 870,
-      "width": 640,
-      "height": 164,
-      "backgroundColor": "#fff"
-    },
-    {
-      "x": 67,
-      "y": 303,
-      "width": 506,
-      "height": 500,
-      "backgroundColor": "#fff"
-    }
-  ],
+  "height": 1050,
+  "backgroundColor": "#FFFFFF",
   "texts": [
     {
-      "text": "Lam",
-      "x": 320,
-      "y": 187,
-      "fontSize": 18,
-      "lineHeight": 18,
-      "color": "#ffe6c0",
+      "text": "宜各抒己见",
+      "x": 400,
+      "y": 50,
+      "fontSize": 40,
+      "lineHeight": 30,
+      "color": "#FFFFFF",
       "width": 320,
       "lineNum": 1,
       "baseLine": "middle",
-      "textAlign": "center"
+      "textAlign": "right"
     },
     {
-      "text": "{个性签名}",
-      "x": 320,
-      "y": 225,
-      "fontSize": 20,
-      "lineHeight": 24,
-      "color": "#ffe6c0",
+      "text": "6",
+      "x": 50,
+      "y": 350,
+      "fontSize": 30,
+      "lineHeight": 30,
+      "color": "#FFFFFF",
       "width": 480,
-      "lineNum": 2,
       "baseLine": "middle",
-      "textAlign": "center"
+      "textAlign": "left"
     },
     {
-      "text": "{小程序码描述}",
-      "x": 170,
-      "y": 923,
-      "fontSize": 18,
-      "color": "#999",
-      "width": 300,
-      "lineNum": 2,
+      "text": "十一月 周三 农历 十月初十",
+      "x": 50,
+      "y": 400,
+      "fontSize": 30,
+      "lineHeight": 30,
+      "color": "#FFFFFF",
+      "width": 500,
       "baseLine": "middle",
-      "zIndex": 8,
-      "lineHeight": 40
+      "textAlign": "left"
+    },
+    {
+      "text": "     著作开篇以“中国必亡论”和“中国速胜论”做引子，然后针对这两种错误观点作者进行了一一驳斥，接着引出作者自己的观点：抗日战争是持久战，最后的胜利是中国的，并通过“能动性在战争中”、“战争和政治”、“抗战的政治动员”、“战争的目的”、“防御中的进攻”、“持久中的速决”、“内线中的外线”、“主动性，灵活性，计划性”、“运动战，游击战，阵地战”、“消耗战，歼灭战”、“乘敌之隙的可能性”、“抗日战争中的决战问题”、“兵民是胜利之本”等既独立而又有联系的篇章的阐述，来说明抗日战争为什么是持久战，怎么进行持久战，为什么能取得最后的胜利，应当怎样做才能取得最后的胜利。",
+      "x": 50,
+      "y": 520,
+      "fontSize": 25,
+      "lineHeight": 25,
+      "color": "#5E5E5E",
+      "lineNum": 20,
+      "width": 550,
+      "baseLine": "middle",
+      "font": "华文仿宋",
+      "textAlign": "left"
+    },
+    {
+      "text": "————摘自《论持久战》",
+      "x": 300,
+      "y": 850,
+      "fontSize": 25,
+      "lineHeight": 25,
+      "color": "#5E5E5E",
+      "lineNum": 20,
+      "width": 550,
+      "baseLine": "middle",
+      "textAlign": "right"
+    }
+  ,
+    {
+      "text": "阅读，遇见美好的未来",
+      "x": 150,
+      "y": 925,
+      "fontSize": 40,
+      "lineHeight": 25,
+      "color": "#5E5E5E",
+      "width": 550,
+      "baseLine": "middle",
+      "textAlign": "left"
     }
   ],
   "images": [
     {
-      "url": "https://thumbs.dreamstime.com/b/海胆亚目花-coneflower-46567122.jpg",
-      "x": 270,
-      "y": 67,
-      "width": 100,
-      "height": 100,
-      "borderRadius": 100
+      "url": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573189673197&di=888c34c1eaa459ed657b2badf01802cd&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D14287081%2C879433960%26fm%3D214%26gp%3D0.jpg",
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 500,
+      "borderRadius": 0
     },
     {
-      "url": "main.png",
-      "x": 87,
-      "y": 323,
-      "width": 466,
-      "height": 460
-    },
-    {
-      "url": "code.png",
+      "url": "https://www.baidu.com/",
       "x": 45,
       "y": 905,
       "width": 100,
       "height": 100,
-      "zIndex": 9
+      "qrCode": true,
+      "borderRadius": 100,
+      "qrCodeMargin": 3
     }
   ]
 }

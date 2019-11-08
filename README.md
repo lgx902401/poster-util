@@ -58,7 +58,7 @@ poster-jsonFile-path=C:\\Users\\appadmin\\Desktop\\poster-util\\src\\main\\resou
 | baseLine       | String           | 否   | top\| middle\|bottom基线对齐方式                             |
 | textAlign      | String           | 否   | left\|center\|right对齐方式                                  |
 | index         | Int              | 否   | 层级，越大越高                                               |
-| fontFamily     | String           | 否   | 默认字体为'pingfangtf' ，支持自定义字体      |
+| font          | String           | 否   | 默认字体为'pingfangtf' ，支持自定义字体      |
 
 ### images字段
 
@@ -71,7 +71,12 @@ poster-jsonFile-path=C:\\Users\\appadmin\\Desktop\\poster-util\\src\\main\\resou
 | height       | Number(单位:px) | 是   | 高度（**会根据图片的尺寸同比例缩放**）    |
 | borderRadius | Number(单位:px) | 否   | 圆角，跟css一样                           |
 | index       | Int              | 否   | 层级，越大越高                            |
-| qrCode       | Bool              | 否   | 是否二维码图片，如果是，url内容就是二维码内容  |
+| qrCode       | Bool            | 否   | 是否二维码图片，如果是，url内容就是二维码内容  |
+| qrCodeMargin | int             | 否   | 二维码边距                                |
+##已经找到问题所在了，因为之前 把 url="www.baidu.com"传的，但实际上 应该把 url="https://www.baidu.com/"
+##才能实现真正的自动跳转页面。主要就是要输入完整的网址
+
+
 
 ### lines字段
 
